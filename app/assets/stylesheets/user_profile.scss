@@ -1,0 +1,37 @@
+@import './colours.scss';
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 124px;
+  height: 85%;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.email-field {
+  margin-left: 107px;
+}
+
+.buttons-container {
+  margin-top: 12px;
+  margin-left: 107px;
+}
+.edit-button {
+  border: 1px;
+  border-radius: 4px;
+  color: $white;
+  background-color: transparent;
+
+  &:hover {
+      border: 2px solid;
+      border-radius: 4px;
+      border-color: $white;
+  }
+}

@@ -1,0 +1,31 @@
+@import './colours.scss';
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: $brown;
+}
+
+.contacts-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 16px;
+}
+
+.pair {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-to-icon {
+    margin-top: 13px;
+}
+
+#credits {
+    margin-top: 16px;
+}

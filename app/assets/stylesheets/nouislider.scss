@@ -1,0 +1,36 @@
+@import './colours.scss';
+
+/*
+    noUiSlider customization
+*/
+
+.noUi-handle {
+  cursor: pointer;
+  border-radius: 20%;
+}
+
+.noUi-horizontal .noUi-handle {
+  width: 18px;
+  height: 18px;
+}
+
+.noUi-target {
+  width: 170px;
+  height: 8px;
+}
+
+.noUi-connect {
+  background-color: $connect_line;
+}
+
+.noUi-handle:after,
+.noUi-handle:before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 10px;
+  width: 1px;
+  background: $slider_square_line;
+  left: 8px;
+  top: 3px;
+}

@@ -1,0 +1,19 @@
+= # user profile's page
+
+= render 'homepage/header'
+%body
+  - if logged_in? && @current_user.id == @user.id
+    .info-container
+      %h1.first-name
+        = gravatar_for @user
+        = @user.name
+      .details-container
+        .email-field
+          Email: 
+          = @user.email
+
+      .buttons-container
+        %button.edit-button EDIT
+        %button.edit-button DELETE
+  - else
+    = controller.redirect_to root_url

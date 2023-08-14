@@ -1,0 +1,72 @@
+= render 'homepage/header'
+.body-container
+  = form_with(url: '/filter', method: :get, html: {class: "filters-container"}) do |form|
+    .dropdown-menus-container
+      .dropdown-menu-display#dropdown-category
+        %button.drop-button CATEGORY
+        %img.dropdown-arrow{:src => image_path('dropdown-arrow.png')} 
+
+        .dropdown-content
+          = form.hidden_field :category, value: 'none'
+          .dropdown-item#entree{:value => "entree"} Entrées
+          .dropdown-item#second-course{:value => "second_course"} Second Course
+          .dropdown-item#dessert{:value => "dessert"} Desserts
+
+      .dropdown-menu-display#dropdown-sorting
+        %button.drop-button SORTING
+        %img.dropdown-arrow{:src => image_path('dropdown-arrow.png')}
+
+        .dropdown-content
+          = form.hidden_field :sorting, value: 'none'
+          .dropdown-item#az{:value => "az"} A to Z
+          .dropdown-item#za{:value => "za"} Z to A
+          .dropdown-item#ascending-price{:value => "ascending-price"} Ascending Price
+          .dropdown-item#descending-price{:value => "descending-price"} Descending Price
+          
+      .dropdown-menu-display#dropdown-vegetarian
+        %button.drop-button VEGETARIAN
+        %img.dropdown-arrow{:src => image_path('dropdown-arrow.png')} 
+
+        .dropdown-content
+          = form.hidden_field :vegetarian_select, value: 'none'
+          .dropdown-item#vegetarian{:value => "vegetarian"} Vegetarian
+          .dropdown-item#non-vegetarian{:value => "non-vegetarian"} Non-Vegetarian
+
+    .price-range-container
+      %p.price-range-item.price PRICE
+
+      %p.price-range-item.price#min-slider
+      = form.hidden_field :min_price, value: '5'
+
+      #uislider
+
+      %p.price-range-item.price#max-slider
+      = form.hidden_field :max_price, value: '85'
+
+    = form.submit "APPLY FILTERS", class: "apply-filters-button"
+    
+    = link_to "RESET FILTERS", root_path, class: "reset-filters-link"
+
+  .food-items-container
+    .border-wrapper
+      - @products.each do |product|
+        .food-item
+          %img.food-image{:src => product.image.url}
+
+          %p.food-name=product.name
+
+          - if product.category == "no_category"
+            %p.food-category Others
+          - elsif product.category == "entree"
+            %p.food-category Entrée
+          - elsif product.category == "second_course"
+            %p.food-category Second Course
+          - elsif product.category == "dessert"
+            %p.food-category Dessert
+
+          %p.food-price="$#{number_with_precision(product.price, precision: 2)}"
+
+          - if logged_in?
+            %button.add-to-cart-button
+              %img.cart-icon{:src => image_path('cart-icon.png')}
+

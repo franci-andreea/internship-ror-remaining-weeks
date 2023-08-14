@@ -1,0 +1,63 @@
+%header
+  .logo-navbar
+    = link_to root_path do
+      .logo
+        %img.logo-icon{:src => "#{image_path('logo.png')}"}
+        %figcaption#logo-text EUREKA CAFFE
+
+    #navbar
+      %ul.navbar
+        %li.navbar.navbar-item
+          = link_to 'HOME', root_path
+
+        %li.navbar.dot •
+
+        %li.navbar.navbar-item
+          %a{:href => "#"}ABOUT
+
+        %li.navbar.dot •
+
+        %li.navbar.navbar-item
+          %a{:href => "#"}SERVICE
+        
+        %li.navbar.dot •
+
+        %li.navbar.navbar-item
+          %a{:href => "#"}BLOG
+        
+
+        %li.navbar.dot •
+
+        %li.navbar.navbar-item
+          %a{:href => "#"}CONTACTS
+
+        - if logged_in?
+          %li.navbar.dot •
+
+          %li.navbar.navbar-item.profile-dropdown
+            %button.profile-drop-button
+              HELLO, 
+              = @current_user.name.upcase
+              %img.user-profile-icon{:src => "#{image_path('user-icon.png')}"}
+            .profile-drop-content
+              = link_to 'My profile', user_path(@current_user)
+              = link_to 'Log Out', logout_path 
+          
+          -# %li.navbar.navbar-item
+          -#   = link_to "LOG OUT #{@current_user.name.upcase}", logout_path, method: :delete
+        - else
+          %li.navbar.dot •
+
+          %li.navbar.navbar-item
+            = link_to "LOGIN", login_path 
+
+  - if @homepage && !@signup && !@login
+    .main-message
+      %h1.main-message-text Ordering food
+
+      %hr.white-line
+
+      %p#slogan Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+      %br
+      %br

@@ -1,0 +1,167 @@
+@import './colours.scss';
+
+.body-margin {
+    margin: 0;
+}
+
+.body-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $white;
+}
+
+.filters-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: $light_brown;
+}
+
+.dropdown-menus-container {
+    display: flex;
+    flex-direction: row;
+    gap: 56px;
+}
+
+.dropdown-menu-display {
+    margin: 24px 24px 24px 24px;
+    position: relative;
+    display: inline-block;
+}
+
+.drop-button {
+    background-color: transparent;
+    color: $white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    pointer-events: none;
+}
+
+.dropdown-arrow {
+    width: 25px;
+    height: 25px;
+    margin-bottom: 4px;
+}
+
+.drop-button:hover,
+.drop-button:focus {
+    background-color: transparent;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: $dropdown_white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content .dropdown-item {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content:hover .dropdown-item:hover {
+    background-color: $dropdown_hover_white;
+    cursor: pointer;
+}
+
+.dropdown-menu-display:hover .dropdown-content {
+    display: block;
+}
+
+.price-range-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.price-range-item {
+    padding: 4px;
+    margin-bottom: -2px;
+}
+
+#min-slider {
+    margin-right: 16px;
+}
+
+#max-slider {
+    margin-left: 16px;
+}
+
+.food-items-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: $white;
+    margin-top: 12px;
+}
+
+.border-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.food-item {
+    display: flex;
+    flex: 1 0 21%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
+    margin: 15px;
+
+    transition: all .2s ease-in-out;
+}
+
+.food-item:hover {
+    transform: scale(1.1);
+}
+
+.apply-filters-button {
+    border: 1px;
+    border-radius: 4px;
+    margin: 6px;
+    color: $white;
+    background-color: $light_brown;
+
+    &:hover {
+        border: 2px solid;
+        border-radius: 4px;
+        border-color: $white;
+    }
+}
+
+.reset-filters-link {
+    border: 1px;
+    border-radius: 4px;
+    margin: 6px;
+    color: $white;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        color: $white;
+    }
+}
+
+.add-to-cart-button {
+    border: 1px;
+    border-radius: 4px;
+    color: $brown;
+    background-color: transparent;
+
+    &:hover {
+        border: 2px solid;
+        border-radius: 4px;
+        border-color: $brown;
+    }
+}

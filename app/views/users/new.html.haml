@@ -1,0 +1,17 @@
+= render 'homepage/header'
+.login-container
+  %h1.main-message-text Sign Up
+  .login-form-container
+    = form_with(model: @user, local: true) do |f|
+      = render 'shared/error_messages'
+      = f.label :name, class: 'form-element'
+      = f.text_field :name, class: 'form-control form-element', placeholder: "John Doe"
+      = f.label :email, class: 'form-element'
+      = f.email_field :email, class: 'form-control form-element', placeholder: "john.doe@example.com"
+      = f.label :password, class: 'form-element'
+      = f.password_field :password, class: 'form-control form-element', placeholder: "••••••"
+      = f.label :password_confirmation, "Confirmation", class: 'form-element'
+      = f.password_field :password_confirmation, class: 'form-control form-element'
+      %br
+      = f.submit "Create Account", class: "btn btn-primary"
+
