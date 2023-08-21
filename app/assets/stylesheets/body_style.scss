@@ -158,10 +158,48 @@
     border-radius: 4px;
     color: $brown;
     background-color: transparent;
+    margin-left: 12px;;
 
     &:hover {
         border: 2px solid;
         border-radius: 4px;
         border-color: $brown;
     }
+}
+
+.basket-container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin-right: 46px;
+}
+
+.add-to-cart-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cart-title {
+    margin-left: 32px;
+}
+
+.cart-item {
+    display: flex;
+    flex-direction: column;
+    border: 2px $white solid;
+    border-radius: 6px;
+    padding: 8px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+}
+
+.cart-text {
+    padding: 4px;
+    margin-left: 6px;
+}
+
+.img-product {
+    margin-left: 6px;
+    margin-top: 6px;
 }

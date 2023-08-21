@@ -1,0 +1,7 @@
+- if logged_in?
+  = render 'navbar'
+  .d-flex.p-2
+    %h1 ADMIN PAGE
+- else
+  :javascript
+    window.location.href="/"

@@ -1,0 +1,23 @@
+- if logged_in? && is_admin?(@current_user)
+  = render 'admin/navbar' 
+  %h1 Create a new product
+  = form_with(model: @product, html: {class: "p-4"}) do |form|
+    .form-group
+      = form.label :name
+      = form.text_field :name, class: "form-control", placeholder: "Pizza Senorita"
+    .form-group
+      = form.label :price
+      = form.text_field :price, class: "form-control", placeholder: "12.34"
+    .form-group
+      = form.label :category
+      = form.select :category, @categories, class: "form-control"
+    .form-group
+      = form.check_box :vegetarian
+      = form.label :vegetarian
+    .form-group
+      = form.label :description
+      = form.text_area :description, class: "form-control", placeholder: "Write a description for your product"
+    .form-group
+      = form.file_field :image
+
+    = form.submit "Create product", class: "btn btn-primary mt-3"

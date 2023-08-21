@@ -1,0 +1,19 @@
+- if logged_in? && is_admin?(@current_user)
+  = render 'admin/navbar'
+  .p-4
+    = link_to "New product", new_product_path, class: "btn btn-warning"
+    %ul.list-group.p-4
+    - @products.each do |product|
+      %li.list-group-item.border.border-secondary.rounded.p-3.d-flex.flex-column
+        = cl_image_tag(product.image.url, class: "float-left img-product")
+        %p 
+          = product.name
+        %p 
+          = product.category
+        %p 
+          = number_with_precision(product.price, precision: 2)
+
+        - if product.vegetarian
+          %p.bg-success Vegetarian
+        = link_to "Edit", edit_product_path(product.id), class: "btn btn-primary"
+        = button_to "Delete", product_path(product.id), method: :delete, class: "btn btn-danger"

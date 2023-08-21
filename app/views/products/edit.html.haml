@@ -1,0 +1,24 @@
+- if logged_in? && is_admin?(@current_user)
+  = render 'admin/navbar'
+  %h1 Edit product page
+  = form_with(url: product_path(@product.id), model: @product, method: :patch, html: {class: "p-4"}) do |form|
+    .form-group
+      = form.label :name
+      = form.text_field :name, class: "form-control", value: "#{@product.name}"
+    .form-group
+      = form.label :price
+      = form.text_field :price, class: "form-control", value: "#{number_with_precision(@product.price, precision: 2)}"
+    .form-group
+      = form.check_box :vegetarian, value: "#{@product.vegetarian}"
+      = form.label :vegetarian
+    .form-group
+      = form.label :category
+      = form.select :category, @categories, class: "form-control", selected: @product.category
+    .form-group
+      = form.label :description
+      = form.text_area :description, class: "form-control", value: "#{@product.description}"
+    .form-group
+      = form.label "Please reintroduce the picture you want for this product"
+      = form.file_field :image, src: "#{@product.image}"
+
+    = form.submit "Edit product", class: "btn btn-primary mt-3"

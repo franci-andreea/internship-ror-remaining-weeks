@@ -1,0 +1,35 @@
+= render 'homepage/header'
+%h1.cart-title
+  = @current_user.name + '\'s cart'
+%br
+
+- if @cart.nil?
+  %h2.cart-title You currently have nothing stored in the cart
+- else
+  %ul
+    - @products.each do |product|
+      %li.cart-item
+        = cl_image_tag(product.image.url, class: "float-left img-product")
+        %p.cart-text
+          = product.name
+        %p.cart-text
+          - if product.category == "no_category"
+            No category 
+          - elsif product.category == "entree"
+            Entrée
+          - elsif product.category == "second_course"
+            Second course
+          - elsif product.category == "dessert"
+            Dessert
+        %p.cart-text Price per unit: #{number_with_precision(product.price, precision: 2)}
+        
+        %p.cart-text Quantity: #{@quantities[product.id]}
+
+        %p.cart-text Product total: #{number_with_precision(product.price * @quantities[product.id].to_i, precision: 2) }
+
+        %br
+
+        = button_to "Remove", remove_from_cart_path(@current_user.id, @cart.id, product.id), class: "btn btn-danger"
+
+  %p.cart-text Total: #{number_with_precision(@total, precision: 2)}
+  = button_to "Place order", create_order_path(@current_user.id, @cart.id, total: @total), class: "btn btn-primary"

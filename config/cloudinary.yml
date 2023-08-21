@@ -1,0 +1,14 @@
+cloudinary:
+  service: Cloudinary
+
+development: 
+  cloud_name: "dxmbijv9d"
+  api_key: "245423343152532"
+  api_secret: "MyGAvTxf-LNIsvPUHdvQq4HKgvM"
+  secure: true
+
+production:
+  cloud_name: "dxmbijv9d"
+  api_key: "245423343152532"
+  api_secret: "MyGAvTxf-LNIsvPUHdvQq4HKgvM"
+  secure: true

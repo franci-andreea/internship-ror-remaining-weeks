@@ -1,19 +1,26 @@
-= # user profile's page
-
 = render 'homepage/header'
 %body
-  - if logged_in? && @current_user.id == @user.id
-    .info-container
-      %h1.first-name
-        = gravatar_for @user
-        = @user.name
-      .details-container
-        .email-field
-          Email: 
-          = @user.email
+  - if logged_in?
+    - if !is_admin?(@current_user)
+      - if @current_user.id == @user.id
+        .info-container
+          %h1.first-name
+            = gravatar_for @user
+            = @user.name
+          .details-container
+            .email-field
+              Email: 
+              = @user.email
 
-      .buttons-container
-        %button.edit-button EDIT
-        %button.edit-button DELETE
+          .buttons-container
+            %button.edit-button EDIT
+            %button.edit-button DELETE
+      - else
+        :javascript
+          window.location.href="/"
+    - else
+      :javascript
+        window.location.href="/admin"
   - else
-    = controller.redirect_to root_url
+    :javascript
+      window.location.href="/"

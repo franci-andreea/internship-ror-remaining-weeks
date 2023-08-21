@@ -158,3 +158,17 @@ $font-weights: (
     font-stretch: semi-expanded;
     color: $white;
 }
+
+.cart-title {
+    font-family: $oswald-font;
+    font-weight: map-get($font-weights, _bold);
+    font-stretch: normal;
+    color: $white;
+}
+
+.cart-text {
+    font-family: $roboto-font;
+    font-weight: map-get($font-weights, _bold);
+    font-stretch: semi-expanded;
+    color: $brown
+}

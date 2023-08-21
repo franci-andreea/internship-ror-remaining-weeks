@@ -25,7 +25,6 @@
         %li.navbar.navbar-item
           %a{:href => "#"}BLOG
         
-
         %li.navbar.dot •
 
         %li.navbar.navbar-item
@@ -41,10 +40,9 @@
               %img.user-profile-icon{:src => "#{image_path('user-icon.png')}"}
             .profile-drop-content
               = link_to 'My profile', user_path(@current_user)
-              = link_to 'Log Out', logout_path 
+              = link_to 'My Orders', show_orders_path(@current_user.id)
+              = link_to 'Log Out', logout_path
           
-          -# %li.navbar.navbar-item
-          -#   = link_to "LOG OUT #{@current_user.name.upcase}", logout_path, method: :delete
         - else
           %li.navbar.dot •
 

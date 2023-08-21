@@ -1,0 +1,21 @@
+- if logged_in?
+  - if @current_user.id == @user.id
+    = render 'homepage/header'
+    %h1.cart-title #{@current_user.name + '\'s orders'}
+    %br
+    - if @orders.length == 0
+      %h2.cart-title You currently have no orders
+    - else
+      %ul
+        - @orders.each do |order|
+          %li.cart-item
+            %p.cart-text Order with ID: #{order.id}
+            %p.cart-text Total: #{order.total}
+
+            = link_to "View order details", show_order_details_path(order_id: order.id), class: "btn btn-secondary"
+  - else
+    :javascript
+      window.location.href="/"
+
+      
+

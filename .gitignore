@@ -32,3 +32,6 @@
 
 # Ignore vscode settings.json
 /.vscode
+
+# Ignore byebug
+.byebug_history

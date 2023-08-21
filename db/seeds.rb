@@ -16,7 +16,7 @@ pasta_al_dente = Product.create(
   vegetarian: false,
   category: 2
 )
-pasta_al_dente.image.attach(io: File.open(Rails.root.join('app/assets/images/pasta-al-dente.png')), filename: 'pasta-al-dente.png')
+pasta_al_dente.image.attach(io: File.open(Rails.root.join('db/images/pasta-al-dente.png')), filename: 'pasta-al-dente.png')
 
 puts("PASTA AL DENTE CREATED AND SUCCESSFULLY ADDED TO THE DATABASE, YAY!")
 
@@ -27,7 +27,7 @@ pasta_with_feta = Product.create(
   vegetarian: true,
   category: 2
 )
-pasta_with_feta.image.attach(io: File.open(Rails.root.join('app/assets/images/pasta-with-feta.png')), filename: 'pasta-with-feta.png')
+pasta_with_feta.image.attach(io: File.open(Rails.root.join('db/images/pasta-with-feta.png')), filename: 'pasta-with-feta.png')
 
 puts("PASTA WITH FETA CREATED AND SUCCESSFULLY ADDED TO THE DATABASE, YAY!")
 
@@ -38,7 +38,7 @@ chicken_soup = Product.create(
   vegetarian: false,
   category: 1
 )
-chicken_soup.image.attach(io: File.open(Rails.root.join('app/assets/images/chicken-soup.png')), filename: 'chicken-soup.png')
+chicken_soup.image.attach(io: File.open(Rails.root.join('db/images/chicken-soup.png')), filename: 'chicken-soup.png')
 
 puts("CHICKEN SOUP CREATED AND SUCCESSFULLY ADDED TO THE DATABASE, YAY!")
 
@@ -49,7 +49,7 @@ crepes_with_nutella = Product.create(
   vegetarian: true,
   category: 3
 )
-crepes_with_nutella.image.attach(io: File.open(Rails.root.join('app/assets/images/crepes-with-nutella.png')), filename: 'crepes-with-nutella.png')
+crepes_with_nutella.image.attach(io: File.open(Rails.root.join('db/images/crepes-with-nutella.png')), filename: 'crepes-with-nutella.png')
 puts("CREPES WITH NUTELLA CREATED AND SUCCESSFULLY ADDED TO THE DATABASE, YAY!")
 
 pizza_california = Product.create(
@@ -57,7 +57,17 @@ pizza_california = Product.create(
   description: "Description for Pizza California",
   price: 12.70,
   vegetarian: false,
-  category: 2
+  category: 2,
 )
-pizza_california.image.attach(io: File.open(Rails.root.join('app/assets/images/california-pizza.png')), filename: 'california-pizza.png')
+pizza_california.image.attach(io: File.open(Rails.root.join('db/images/california-pizza.png')), filename: 'california-pizza.png')
 puts("PIZZA CALIFORNIA CREATED AND SUCCESSFULLY ADDED TO THE DATABASE, YAY!")
+
+User.where(role: 1).delete_all
+admin = User.create(
+  name: "Admin Franci",
+  email: "franci@admin.com",
+  password: "admin123",
+  password_confirmation: "admin123",
+  role: 1
+)
+puts("Admin created!")

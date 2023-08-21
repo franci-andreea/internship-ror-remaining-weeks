@@ -1,0 +1,19 @@
+- if logged_in? && is_admin?(@current_user)
+  = render 'admin/navbar'
+  .p-4
+    = link_to "New order", root_path, class: "btn btn-warning"
+    %ul.list-group.p-4
+    - @orders.each do |order|
+      - if !order.is_cart
+        %li.list-group-item.border.border-secondary.rounded.p-3.d-flex.flex-column.mb-2
+          %p Order with ID: #{order.id}
+          %p Total: #{order.total}
+          %p User ID: #{order.user_id}
+          %p Status: #{}
+          - if order.status == "pending"
+            %p.bg-warning PENDING
+            = button_to "Mark as completed", mark_order_path(order_id: order.id), class: "btn btn-info"
+          - else
+            %p.bg-success COMPLETED
+          = button_to "Delete", order_path(order.id), method: :delete, class: "btn btn-danger"
+          = link_to "Edit", edit_order_path(order.id), class: "btn btn-primary"

@@ -1,0 +1,13 @@
+- if logged_in? && is_admin?(@current_user)
+  = render 'admin/navbar'
+  .p-4
+    = link_to "New user?", root_path, class: "btn btn-warning"
+    %ul.list-group.pt-2
+    - @users.each do |user|
+      %li.list-group-item.border.border-secondary.rounded.p-3.d-flex.flex-column
+        %p #{user.name}
+        %p #{user.email}
+        - if user.role == "admin"
+          %p.text-danger ADMIN
+        = link_to "Edit", root_path, class: "btn btn-primary"
+        = button_to "Make admin", make_admin_path(user_id: user.id), method: :post, class: "btn btn-info"
