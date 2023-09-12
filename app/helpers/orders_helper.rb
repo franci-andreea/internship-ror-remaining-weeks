@@ -10,19 +10,16 @@ module OrdersHelper
   def add_product_to_cart(cart, product, quantity)
     # verify if the product already exists in the cart
     # if it does, just update the quantity
-    @cart.order_products.each do |order_product|
-      if order_product.product_id == product.id
-        updated_quantity = order_product.quantity + quantity.to_i
-        order_product.update_column(:quantity, updated_quantity)
-        
-        return
-      end
+    if cart.product_ids.include? product.id
+      order_product = OrderProduct.find_by(product_id: product.id)
+      updated_quantity = order_product.quantity + quantity.to_i
+      order_product.update_column(:quantity, updated_quantity)
+    else
+      # if the product does not exist, add it to the cart and
+      # set the quantity to params[:quantity]
+      cart.products.push(product)
+      cart.order_products.last.update_column(:quantity, quantity.to_i)
     end
-
-    # if the product does not exist, add it to the cart and
-    # set the quantity to params[:quantity]
-    @cart.products.push(product)
-    @cart.order_products.last.update_column(:quantity, quantity.to_i)
   end
   
 end

@@ -54,6 +54,14 @@ gem "byebug"
 
 gem "cloudinary"
 
+gem "alba"
+
+gem "factory_bot_rails"
+
+gem "faker"
+
+gem 'jwt'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -78,4 +86,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "rspec-rails"
 end
